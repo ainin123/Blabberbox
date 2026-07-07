@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build output
+client/dist/
+server/dist/
+
+# Database (local dev only — Railway uses a mounted volume)
+*.db
+*.db-shm
+*.db-wal
+server/blabberbox.db
+
+# Environment files (never commit secrets)
+.env
+server/.env
+client/.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

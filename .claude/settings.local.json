@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const db = require\\('better-sqlite3'\\)\\(':memory:'\\); db.exec\\('CREATE TABLE t \\(x TEXT\\)'\\); db.prepare\\('INSERT INTO t VALUES \\(?\\)'\\).run\\('hello'\\); const r = db.prepare\\('SELECT * FROM t'\\).get\\(\\); console.log\\('SQLite OK:', r.x\\);\")"
+    ]
+  }
+}
