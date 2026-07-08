@@ -1130,8 +1130,7 @@ sequenceDiagram
 ```mermaid
 graph TB
     subgraph Client["Client (Vite + React 18)"]
-        direction TB
-        App[App.tsx<br/>Router]
+        App["App.tsx / Router"]
         App --> Auth[AuthPage]
         App --> Shell[AppShell]
         Shell --> Sidebar
@@ -1141,30 +1140,29 @@ graph TB
         ChatArea --> MessageInput
         ChatArea --> TypingIndicator
         subgraph Stores["Zustand Stores"]
-            AuthStore[authStore<br/>persisted]
+            AuthStore["authStore (persisted)"]
             ChatStore[chatStore]
-            UIStore[uiStore<br/>partial persist]
+            UIStore["uiStore (partial persist)"]
         end
         subgraph Services["Services"]
             API[api.ts]
-            Crypto[crypto.ts<br/>TweetNaCl]
-            SocketSvc[socket.ts<br/>Socket.io Client]
+            Crypto["crypto.ts / TweetNaCl"]
+            SocketSvc["socket.ts / Socket.io Client"]
         end
     end
 
     subgraph Server["Server (Express + Node 22)"]
-        direction TB
-        Index[index.ts<br/>Bootstrap]
-        Index --> AuthRoute[/api/auth]
-        Index --> UsersRoute[/api/users]
-        Index --> ConvRoute[/api/conversations]
-        Index --> MsgRoute[/api/messages]
-        Index --> SocketHandler[socket/handler.ts]
+        Index["index.ts / Bootstrap"]
+        Index --> AuthRoute["/api/auth"]
+        Index --> UsersRoute["/api/users"]
+        Index --> ConvRoute["/api/conversations"]
+        Index --> MsgRoute["/api/messages"]
+        Index --> SocketHandler["socket/handler.ts"]
         subgraph Middleware
             Helmet
             CORS
             RateLimit[Rate Limiter]
-            AuthMW[auth.ts]
+            AuthMW["auth.ts"]
         end
         subgraph DB["SQLite (DatabaseSync)"]
             Users[(users)]
@@ -1177,7 +1175,7 @@ graph TB
         end
     end
 
-    Client -->|REST: /api/*| Server
+    Client -->|"REST /api/*"| Server
     Client -->|WebSocket| SocketHandler
     Server --> DB
 ```
